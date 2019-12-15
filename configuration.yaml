@@ -37,6 +37,80 @@ device_tracker:
       track_new_devices: false
       hide_if_away: false
 
+# Google calendar
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
+  track_new_calendar: false
+
+# input Booleans
+input_boolean:
+  zigbee_permit_join:
+    name: Nieuwe apparaten toevoegen
+    initial: off
+    icon: mdi:cellphone-wireless
+  renew_certificate:
+    name: Certificaat vernieuwen
+    initial: off
+    icon: mdi:autorenew
+
+# Lights
+light:
+  - platform: xiaomi_miio
+    name: Lamp Woonkamer plafon 001
+    host: 10.61.2.130
+    token: !secret xiaomi_001
+  - platform: xiaomi_miio
+    name: Lamp Woonkamer plafon 002
+    host: 10.61.2.131
+    token: !secret xiaomi_002
+  - platform: xiaomi_miio
+    name: Lamp Woonkamer plafon 003
+    host: 10.61.2.132
+    token: !secret xiaomi_003
+  - platform: xiaomi_miio
+    name: Lamp Eetkamer plafon 001
+    host: 10.61.2.133
+    token: !secret xiaomi_004
+  - platform: xiaomi_miio
+    name: Lamp Eetkamer plafon 002
+    host: 10.61.2.134
+    token: !secret xiaomi_005
+  - platform: xiaomi_miio
+    name: Lamp Eetkamer plafon 003
+    host: 10.61.2.135
+    token: !secret xiaomi_006
+
+# Panels 
+#panel_iframe:
+#  networkmap:
+#    title: 'Zigbee Map'
+#    url: '/local/community/zigbee2mqtt_networkmap/map.html'
+#    icon: 'mdi:graphql'
+
+
+# Timers
+timer:
+  zigbee_permit_join:
+    name: Time remaining
+    duration: 600
+
+# Toon
+toon:
+  client_id: !secret toon_consumer_key
+  client_secret: !secret toon_consumer_secret
+
+# Yeelight
+yeelight:
+  devices:
+    10.61.2.128:
+      name: Lamp Woonkamer TV-kast 
+    10.61.2.129:
+      name: Lamp Woonkamer Wit-tafeltje 
+
+# Zigbee2mqtt
+zigbee2mqtt_networkmap:
+
 # Zones
 zone:
   - name: !secret zone_phome
