@@ -16,3 +16,5 @@
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+google_calendars.yaml
+.google_maps_location_sharing.*
