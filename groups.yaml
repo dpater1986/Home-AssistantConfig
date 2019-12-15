@@ -1,0 +1,19 @@
+Lamp_Woonkamer_plafon: 
+  name: Lamp Woonkamer plafon
+  entities:
+    - light.lamp_woonkamer_plafon_001
+    - light.lamp_woonkamer_plafon_002
+    - light.lamp_woonkamer_plafon_003
+  icon: mdi:ceiling-light
+Lamp_Eetkamer_plafon: 
+  name: Lamp Eetkamer plafon
+  entities:
+    - light.lamp_eetkamer_plafon_001
+    - light.lamp_eetkamer_plafon_002
+    - light.lamp_eetkamer_plafon_003
+  icon: mdi:ceiling-light
+Lamp_Woonkamer_sfeerlampen:
+  name: Lampen Woonkamer sfeer
+  entities:
+    - light.lamp_woonkamer_wit_tafeltje
+    - light.lamp_woonkamer_tv_kast

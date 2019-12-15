@@ -82,11 +82,11 @@ light:
     token: !secret xiaomi_006
 
 # Panels 
-#panel_iframe:
-#  networkmap:
-#    title: 'Zigbee Map'
-#    url: '/local/community/zigbee2mqtt_networkmap/map.html'
-#    icon: 'mdi:graphql'
+panel_iframe:
+  networkmap:
+    title: 'Zigbee Map'
+    url: '/local/community/zigbee2mqtt_networkmap/map.html'
+    icon: 'mdi:graphql'
 
 
 # Timers
