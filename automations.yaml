@@ -1,3 +1,127 @@
+# Ochtend routine
+- id: Ochtend_routine_minou
+  alias: Ochtend routine Minou
+  trigger:
+    platform: template
+    value_template: "{{ ((as_timestamp(states.calendar.minou_werk.attributes.start_time) - as_timestamp(states.sensor.time.last_changed)) < 7200) }}"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.toon_thermostat
+        temperature: 20
+    - delay: "00:45:00"
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.toon_thermostat
+        temperature: 21
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+        brightness: 1
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+        transition: 120
+        brightness: 255
+    - delay: "00:10:00"
+    - service: light.turn_on
+      data:
+        entity_id:
+          - group.lamp_woonkamer_plafon
+          - group.lamp_eetkamer_plafon
+        brightness: 1
+    - service: light.turn_on
+      data:
+        entity_id:
+          - group.lamp_woonkamer_plafon
+          - group.lamp_eetkamer_plafon
+        transition: 120
+        brightness: 150
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+        transition: 180
+        brightness: 50
+
+- id: Ochtend_routine_dennis
+  alias: Ochtend routine Dennis
+  trigger:
+    platform: template
+    value_template: "{{ ((as_timestamp(states.calendar.dennis_werk.attributes.start_time) - as_timestamp(states.sensor.time.last_changed)) < 7200) }}"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.toon_thermostat
+        temperature: 20
+    - delay: "00:40:00"
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.toon_thermostat
+        temperature: 21
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+        brightness: 1
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+        transition: 120
+        brightness: 255
+
+- id: Ochtend_routine2
+  alias: Werken2
+  trigger:
+    platform: template
+    value_template: "{{ ((as_timestamp(states.calendar.minou_werk.attributes.start_time) - as_timestamp(now())) < 1500) }}"
+  action:
+    service: light.turn_on
+    entity_id: light.lamp_eetkamer_plafon_002
+
+- id: Ochtend_routine3
+  alias: Werken3
+  trigger:
+    platform: template
+    value_template: "{{ ((as_timestamp(states.calendar.minou_werk.attributes.start_time) - as_timestamp(now())) < 1440) }}"
+  action:
+    service: light.turn_on
+    entity_id: light.lamp_eetkamer_plafon_003
+
+# Hal lamp aan
+- id: hal_light_on
+  alias: Hal lamp aan
+  hide_entity: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00042427fd_occupancy
+    to: 'on'
+  condition:
+    condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
+    conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "-01:00:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "01:00:00"
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+        transition: 20
+        brightness: 100
+- id: hal_lights_off_5min
+  alias: Hal lamp uit 
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d00042427fd_occupancy
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.0x14b457fffe44351d_light
+      transition: 20
 
 # Renew cert
 - id: enable_renew_cert
@@ -18,6 +142,56 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.renew_certificate
+
+# Themperature
+- id: temp_to_sleep
+  alias: Tempetatuur op slaap modus
+  trigger:
+  - platform: time
+    at: "23:00:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.toon_thermostat
+        temperature: 18
+- id: temp_to_wakeup
+  alias: Tempetatuur op opstaan
+  trigger:
+  - platform: time
+    at: "06:00:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.toon_thermostat
+        temperature: 21
+    
+# Toilet lamp aan
+- id: toilet_light_on
+  alias: Toilet lamp aan
+  hide_entity: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00040c7074_occupancy
+    to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.0x086bd7fffe0505af_light
+        transition: 20
+        brightness: 100
+- id: toilet_lights_off_5min
+  alias: Toilet lamp uit 
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d00040c7074_occupancy
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.0x086bd7fffe0505af_light
+      transition: 20
 
 # Zigbee
 - id: enable_zigbee_join

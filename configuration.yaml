@@ -88,6 +88,31 @@ panel_iframe:
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
 
+# Sensors
+sensor:
+  - platform: cert_expiry
+    host: home-assistant.io
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) }}'
+  - platform: fritzbox_netmonitor
+    host: 10.61.0.1
+    name: Fritz
+  - platform: mqtt
+    name: Bridge state
+    state_topic: "zigbee2mqtt/bridge/state"
+    icon: mdi:router-wireless
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
 
 # Timers
 timer:
@@ -128,7 +153,7 @@ zone:
     longitude: !secret zone_workh_lo
     radius: 150
     icon: mdi:worker
-    passive: true
+    passive: false
   - name: !secret zone_play
     latitude: !secret zone_play_la
     longitude: !secret zone_play_lo
