@@ -10,7 +10,7 @@ hide_entity: true
 trigger:
   platform: state
   entity_id: binary_sensor.0x00158d00042427fd_occupancy
-    to: 'on'
+  to: 'on'
 
 condition:
   condition: and
