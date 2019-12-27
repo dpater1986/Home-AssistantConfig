@@ -15,7 +15,6 @@ condition:
     after: '03:30:00'
     before: '09:00:00'
 
-
 action:
   - service: input_boolean.turn_on
     data:
