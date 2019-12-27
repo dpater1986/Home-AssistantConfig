@@ -1,0 +1,8 @@
+#triggers
+morning_routine_dennis:
+  name: Ochtend ritueel Dennis
+  initial: off
+
+morning_routine_minou:
+  name: Ochtend ritueel Minou
+  initial: off
