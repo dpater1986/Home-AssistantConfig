@@ -11,7 +11,7 @@ trigger:
   value_template: "{{ ((as_timestamp(states.calendar.dennis_werk.attributes.start_time) - as_timestamp(states.sensor.time.last_changed)) < 7200) }}"
 
 condition:
- - condition: time
+  - condition: time
     after: '03:30:00'
     before: '09:00:00'
 
