@@ -1,4 +1,4 @@
-#triggers
+#conditions
 morning_routine_dennis:
   name: Ochtend ritueel Dennis
   initial: off
