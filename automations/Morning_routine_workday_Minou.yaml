@@ -1,5 +1,5 @@
 ######################################################################
-##  Workday morning routine Minou
+##  Morning routine workday Minou
 ######################################################################
 #   Runs 2 hours before her workday
 #   Input is calendar based
@@ -16,6 +16,9 @@ condition:
     before: '09:00:00'
 
 action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.morning_routine_minou
   - service: climate.set_temperature
     data:
       entity_id: climate.toon_thermostat
