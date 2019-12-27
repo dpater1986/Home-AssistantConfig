@@ -1,0 +1,40 @@
+######################################################################
+##  Motion in hallway turn lights on
+######################################################################
+#   Input is motion dectection
+#   Turn off is 'motion_hallway_off.yaml'
+
+alias: Hal lamp aan
+hide_entity: true
+
+trigger:
+  platform: state
+  binary_sensor.0x00158d00042427fd_occupancy
+    to: 'on'
+
+condition:
+  condition: and
+  conditions:
+    - condition: or
+      conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "-01:00:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "01:00:00"
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.morning_routine_dennis
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.morning_routine_minou
+        state: 'off
+
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.0x14b457fffe44351d_light
+      transition: 20
+      brightness: 100
