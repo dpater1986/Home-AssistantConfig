@@ -28,7 +28,7 @@ condition:
       state: 'off'
     - condition: state
       entity_id: input_boolean.morning_routine_minou
-      state: 'off
+      state: 'off'
 
 action:
   - service: light.turn_on
