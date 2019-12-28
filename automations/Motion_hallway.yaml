@@ -1,9 +1,9 @@
 ######################################################################
-##  Motion in hallway turn lights on
+##  Motion in hallway turn lights on and off
 ######################################################################
 #   Input is motion dectection
-#   Turn off is 'motion_hallway_off.yaml'
 
+# Hallway lights on
 - alias: Hal lamp aan
   hide_entity: true
 
@@ -26,7 +26,7 @@
     - service: light.turn_on
       data:
         entity_id: light.0x14b457fffe44351d_light
-    - condition: and
+    - condition: and ### Stop controling brightness when morning routine is active.
       conditions:
       - condition: state
         entity_id: input_boolean.morning_routine_dennis
@@ -39,3 +39,19 @@
         entity_id: light.0x14b457fffe44351d_light
         transition: 20
         brightness: 100
+
+# Hallway lights off
+- alias: Hal lamp uit
+  hide_entity: true
+
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d00042427fd_occupancy
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.0x14b457fffe44351d_light
+      transition: 30
