@@ -6,6 +6,7 @@
 # Renew cert
 - alias: Enable Renew certificate
   hide_entity: true
+
   trigger:
   - platform: state
     entity_id: input_boolean.renew_certificate
@@ -13,6 +14,7 @@
   - platform: numeric_state
     entity_id: sensor.ssl_certificate_expiry 
     below: 7
+
   action:
   - service: hassio.addon_start
     data:
