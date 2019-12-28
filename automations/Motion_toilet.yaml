@@ -1,0 +1,40 @@
+  
+######################################################################
+##  Motion in toilet turn lights on and off
+######################################################################
+#   Input is motion dectection
+
+# Toilet light on
+- id: toilet_light_on
+  alias: Toilet lamp aan
+  hide_entity: true
+  
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00040c7074_occupancy
+    to: 'on'
+  
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.0x086bd7fffe0505af_light
+        transition: 20
+        brightness: 100
+
+
+# Toilet light off after 5 minutes
+- id: toilet_lights_off_5min
+  alias: Toilet lamp uit 
+  
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d00040c7074_occupancy
+    to: 'off'
+    for:
+      minutes: 5
+  
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.0x086bd7fffe0505af_light
+      transition: 20
