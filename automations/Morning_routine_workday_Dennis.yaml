@@ -4,7 +4,6 @@
 #   Runs 2 hours before my workday
 #   Input is calendar based
 
-
 - alias: Werkdag ochtend ritueel Dennis
   trigger:
     platform: template
