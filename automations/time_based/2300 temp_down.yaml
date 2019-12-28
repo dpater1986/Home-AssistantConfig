@@ -1,1 +1,36 @@
 
+######################################################################
+##  Temperature to sleep
+######################################################################
+#   Input is motion dectection
+
+# Themperature
+- id: temp_to_sleep
+  alias: Tempetatuur op slaap modus
+  trigger:
+  - platform: time
+    at: "23:00:00"
+  action:
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.toon_thermostat
+        preset_mode: 'Sleep'
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.toon_thermostat
+        temperature: 18
+
+- id: temp_to_wakeup
+  alias: Tempetatuur op opstaan
+  trigger:
+  - platform: time
+    at: "06:00:00"
+  action:
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.toon_thermostat
+        preset_mode: 'Home'
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.toon_thermostat
+        temperature: 20
