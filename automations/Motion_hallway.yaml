@@ -13,24 +13,27 @@
     to: 'on'
 
   condition:
-    condition: and
-    conditions:
-      - condition: or
-        conditions:
-        - condition: sun
-          after: sunset
-          after_offset: "-01:00:00"
-        - condition: sun
-          before: sunrise
-          before_offset: "01:00:00"
+    - condition: or
+      conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "-01:00:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "01:00:00"
+
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+    - condition: and
+      conditions:
       - condition: state
         entity_id: input_boolean.morning_routine_dennis
         state: 'off'
       - condition: state
         entity_id: input_boolean.morning_routine_minou
         state: 'off'
-
-  action:
     - service: light.turn_on
       data:
         entity_id: light.0x14b457fffe44351d_light
