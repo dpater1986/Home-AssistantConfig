@@ -1,0 +1,23 @@
+######################################################################
+##  Renew certificate for https
+######################################################################
+#   Input is input_boolean and expired in x days
+
+# Renew cert
+- alias: Enable Renew certificate
+  hide_entity: true
+  trigger:
+  - platform: state
+    entity_id: input_boolean.renew_certificate
+    to: 'on'
+  - platform: numeric_state
+    entity_id: sensor.ssl_certificate_expiry 
+    below: 7
+  action:
+  - service: hassio.addon_start
+    data:
+      addon: "core_letsencrypt"
+  - delay: "00:00:05"
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.renew_certificate
