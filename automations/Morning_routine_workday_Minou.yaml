@@ -11,9 +11,14 @@
     value_template: "{{ ((as_timestamp(states.calendar.minou_werk.attributes.start_time) - as_timestamp(states.sensor.time.last_changed)) < 7200) }}"
 
   condition:
-    - condition: time
-      after: '03:30:00'
-      before: '09:00:00'
+    condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
+    conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "-02:00:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "02:00:00"
 
   action:
     - service: input_boolean.turn_on
@@ -23,8 +28,7 @@
       data:
         entity_id: climate.toon_thermostat
         temperature: 20
-    - delay: "00:45:00"
-      # The alarm clock rings
+    - delay: "00:45:00" # The alarm clock rings
     - service: light.turn_on
       data:
         entity_id: light.0x14b457fffe44351d_light
@@ -32,11 +36,9 @@
     - service: light.turn_on
       data:
         entity_id: light.0x14b457fffe44351d_light
-        transition: 180
-        # 3 mins to bright light
+        transition: 180 # 3 mins to bright light
         brightness: 200
-    - delay: "00:5:00"
-      # make-up time
+    - delay: "00:5:00" # make-up time
     - service: light.turn_on
       data:
         entity_id:
