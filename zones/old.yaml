@@ -1,0 +1,22 @@
+- name: !secret zone_phome
+  latitude: !secret zone_phome_la
+  longitude: !secret zone_phome_lo
+  radius: 50
+  icon: mdi:worker
+- name: !secret zone_vhome
+  latitude: !secret zone_vhome_la
+  longitude: !secret zone_vhome_lo
+  icon: mdi:home
+  radius: 50
+- name: !secret zone_workh
+  latitude: !secret zone_workh_la
+  longitude: !secret zone_workh_lo
+  radius: 150
+  icon: mdi:worker
+  passive: false
+- name: !secret zone_play
+  latitude: !secret zone_play_la
+  longitude: !secret zone_play_lo
+  radius: 100
+  icon: mdi:cards-playing-outline
+  passive: true
