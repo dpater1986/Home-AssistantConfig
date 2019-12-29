@@ -11,31 +11,17 @@ tts:
   - platform: google_translate
 
 group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include_dir_merge_list automations
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-# Custom
-
-# Device trackers
-device_tracker:
-  - platform: fritz
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
-  - platform: bluetooth_tracker
-    interval_seconds: 15
-    consider_home: 150
-    track_new_devices: false
-    request_rssi: true
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
-  - platform: google_maps
-    username: !secret google_maps_email
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
+binary_sensor: !include_dir_merge_list binary_sensors
+device_tracker: !include_dir_merge_named device_trackers 
+input_boolean: !include_dir_merge_named input_booleans
+light: !include_dir_merge_named lights
+sensor: !include_dir_merge_list sensors
+timer: !include_dir_merge_named timers
+zone: !include_dir_merge_list zones
 
 # Google calendar
 google:
@@ -43,82 +29,12 @@ google:
   client_secret: !secret google_client_secret
   track_new_calendar: false
 
-# input Booleans
-input_boolean:
-  zigbee_permit_join:
-    name: Nieuwe apparaten toevoegen
-    initial: off
-    icon: mdi:cellphone-wireless
-  renew_certificate:
-    name: Certificaat vernieuwen
-    initial: off
-    icon: mdi:autorenew
-
-# Lights
-light:
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 001
-    host: 10.61.2.130
-    token: !secret xiaomi_001
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 002
-    host: 10.61.2.131
-    token: !secret xiaomi_002
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 003
-    host: 10.61.2.132
-    token: !secret xiaomi_003
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 001
-    host: 10.61.2.133
-    token: !secret xiaomi_004
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 002
-    host: 10.61.2.134
-    token: !secret xiaomi_005
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 003
-    host: 10.61.2.135
-    token: !secret xiaomi_006
-
 # Panels 
 panel_iframe:
   networkmap:
     title: 'Zigbee Map'
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
-
-# Sensors
-sensor:
-  - platform: cert_expiry
-    host: home-assistant.io
-  - platform: command_line
-    name: CPU Temperature
-    command: "cat /sys/class/thermal/thermal_zone0/temp"
-    unit_of_measurement: "°C"
-    value_template: '{{ value | multiply(0.001) }}'
-  - platform: fritzbox_netmonitor
-    host: 10.61.0.1
-    name: Fritz
-  - platform: mqtt
-    name: Bridge state
-    state_topic: "zigbee2mqtt/bridge/state"
-    icon: mdi:router-wireless
-  - platform: time_date
-    display_options:
-      - 'time'
-      - 'date'
-      - 'date_time'
-      - 'date_time_iso'
-      - 'time_date'
-      - 'time_utc'
-      - 'beat'
-
-# Timers
-timer:
-  zigbee_permit_join:
-    name: Time remaining
-    duration: 600
 
 # Toon
 toon:
@@ -135,28 +51,3 @@ yeelight:
 
 # Zigbee2mqtt
 zigbee2mqtt_networkmap:
-
-# Zones
-zone:
-  - name: !secret zone_phome
-    latitude: !secret zone_phome_la
-    longitude: !secret zone_phome_lo
-    radius: 50
-    icon: mdi:worker
-  - name: !secret zone_vhome
-    latitude: !secret zone_vhome_la
-    longitude: !secret zone_vhome_lo
-    icon: mdi:home
-    radius: 50
-  - name: !secret zone_workh
-    latitude: !secret zone_workh_la
-    longitude: !secret zone_workh_lo
-    radius: 150
-    icon: mdi:worker
-    passive: false
-  - name: !secret zone_play
-    latitude: !secret zone_play_la
-    longitude: !secret zone_play_lo
-    radius: 100
-    icon: mdi:cards-playing-outline
-    passive: true

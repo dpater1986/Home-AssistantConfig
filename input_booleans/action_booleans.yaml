@@ -1,0 +1,9 @@
+zigbee_permit_join:
+  name: Nieuwe apparaten toevoegen
+  initial: off
+  icon: mdi:cellphone-wireless
+
+renew_certificate:
+  name: Certificaat vernieuwen
+  initial: off
+  icon: mdi:autorenew

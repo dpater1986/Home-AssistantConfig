@@ -6,6 +6,14 @@
 !*.yaml
 !.gitignore
 !*.md
+!automations
+!binary_sensors
+!device_trackers 
+!input_booleans
+!lights
+!sensors
+!timers
+!zones
 
 # Ignore folders.
 .storage
