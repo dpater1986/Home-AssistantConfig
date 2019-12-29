@@ -48,3 +48,7 @@
       data:
         entity_id: light.0x14b457fffe44351d_light
         brightness: 50
+    - delay: '01:10:00'
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.morning_routine_minou
