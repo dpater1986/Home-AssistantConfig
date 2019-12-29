@@ -39,3 +39,7 @@
       data:
         entity_id: light.0x14b457fffe44351d_light
         brightness: 100
+    - delay: '01:15:00' # Delay the remaining time (trigger is set for 2 hours before)
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.morning_routine_dennis
