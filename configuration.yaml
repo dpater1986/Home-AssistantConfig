@@ -15,11 +15,13 @@ automation: !include_dir_merge_list automations
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+binary_sensor: !include_dir_merge_list binary_sensors
 device_tracker: !include_dir_merge_named device_trackers 
 input_boolean: !include_dir_merge_named input_boolean
+light: !include_dir_merge_named lights
 sensor: !include_dir_merge_list sensors
-binary_sensor: !include_dir_merge_list binary_sensors
-
+timer: !include_dir_merge_list timers
+zone: !include_dir_merge_list zones
 
 # Google calendar
 google:
@@ -27,45 +29,12 @@ google:
   client_secret: !secret google_client_secret
   track_new_calendar: false
 
-# Lights
-light:
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 001
-    host: 10.61.2.130
-    token: !secret xiaomi_001
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 002
-    host: 10.61.2.131
-    token: !secret xiaomi_002
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 003
-    host: 10.61.2.132
-    token: !secret xiaomi_003
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 001
-    host: 10.61.2.133
-    token: !secret xiaomi_004
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 002
-    host: 10.61.2.134
-    token: !secret xiaomi_005
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 003
-    host: 10.61.2.135
-    token: !secret xiaomi_006
-
 # Panels 
 panel_iframe:
   networkmap:
     title: 'Zigbee Map'
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
-
-# Timers
-timer:
-  zigbee_permit_join:
-    name: Time remaining
-    duration: 600
 
 # Toon
 toon:
@@ -82,28 +51,3 @@ yeelight:
 
 # Zigbee2mqtt
 zigbee2mqtt_networkmap:
-
-# Zones
-zone:
-  - name: !secret zone_phome
-    latitude: !secret zone_phome_la
-    longitude: !secret zone_phome_lo
-    radius: 50
-    icon: mdi:worker
-  - name: !secret zone_vhome
-    latitude: !secret zone_vhome_la
-    longitude: !secret zone_vhome_lo
-    icon: mdi:home
-    radius: 50
-  - name: !secret zone_workh
-    latitude: !secret zone_workh_la
-    longitude: !secret zone_workh_lo
-    radius: 150
-    icon: mdi:worker
-    passive: false
-  - name: !secret zone_play
-    latitude: !secret zone_play_la
-    longitude: !secret zone_play_lo
-    radius: 100
-    icon: mdi:cards-playing-outline
-    passive: true
