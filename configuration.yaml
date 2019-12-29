@@ -20,7 +20,7 @@ device_tracker: !include_dir_merge_named device_trackers
 input_boolean: !include_dir_merge_named input_booleans
 light: !include_dir_merge_named lights
 sensor: !include_dir_merge_list sensors
-timer: !include_dir_merge_list timers
+timer: !include_dir_merge_named timers
 zone: !include_dir_merge_list zones
 
 # Google calendar
