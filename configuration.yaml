@@ -12,31 +12,14 @@ tts:
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
-input_boolean: !include_dir_merge_named input_boolean
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-# Custom
+device_tracker: !include_dir_merge_named device_trackers 
+input_boolean: !include_dir_merge_named input_boolean
+sensor: !include_dir_merge_list sensors
+binary_sensor: !include_dir_merge_list binary_sensors
 
-# Device trackers
-device_tracker:
-  - platform: fritz
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
-  - platform: bluetooth_tracker
-    interval_seconds: 15
-    consider_home: 150
-    track_new_devices: false
-    request_rssi: true
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
-  - platform: google_maps
-    username: !secret google_maps_email
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
 
 # Google calendar
 google:
@@ -77,32 +60,6 @@ panel_iframe:
     title: 'Zigbee Map'
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
-
-# Sensors
-sensor:
-  - platform: cert_expiry
-    host: home-assistant.io
-  - platform: command_line
-    name: CPU Temperature
-    command: "cat /sys/class/thermal/thermal_zone0/temp"
-    unit_of_measurement: "°C"
-    value_template: '{{ value | multiply(0.001) }}'
-  - platform: fritzbox_netmonitor
-    host: 10.61.0.1
-    name: Fritz
-  - platform: mqtt
-    name: Bridge state
-    state_topic: "zigbee2mqtt/bridge/state"
-    icon: mdi:router-wireless
-  - platform: time_date
-    display_options:
-      - 'time'
-      - 'date'
-      - 'date_time'
-      - 'date_time_iso'
-      - 'time_date'
-      - 'time_utc'
-      - 'beat'
 
 # Timers
 timer:
