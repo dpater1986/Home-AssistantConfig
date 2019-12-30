@@ -18,7 +18,6 @@ scene: !include scenes.yaml
 binary_sensor: !include_dir_merge_list binary_sensors
 device_tracker: !include_dir_merge_named device_trackers 
 input_boolean: !include_dir_merge_named input_booleans
-light: !include_dir_merge_named lights
 sensor: !include_dir_merge_list sensors
 timer: !include_dir_merge_named timers
 zone: !include_dir_merge_list zones
@@ -28,6 +27,33 @@ google:
   client_id: !secret google_client_id
   client_secret: !secret google_client_secret
   track_new_calendar: false
+
+# Lights
+light:
+  - platform: xiaomi_miio
+    name: Lamp Woonkamer plafon 001
+    host: 10.61.2.130
+    token: !secret xiaomi_001
+  - platform: xiaomi_miio
+    name: Lamp Woonkamer plafon 002
+    host: 10.61.2.131
+    token: !secret xiaomi_002
+  - platform: xiaomi_miio
+    name: Lamp Woonkamer plafon 003
+    host: 10.61.2.132
+    token: !secret xiaomi_003
+  - platform: xiaomi_miio
+    name: Lamp Eetkamer plafon 001
+    host: 10.61.2.133
+    token: !secret xiaomi_004
+  - platform: xiaomi_miio
+    name: Lamp Eetkamer plafon 002
+    host: 10.61.2.134
+    token: !secret xiaomi_005
+  - platform: xiaomi_miio
+    name: Lamp Eetkamer plafon 003
+    host: 10.61.2.135
+    token: !secret xiaomi_006
 
 # Panels 
 panel_iframe:
