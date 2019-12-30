@@ -22,6 +22,26 @@ sensor: !include_dir_merge_list sensors
 timer: !include_dir_merge_named timers
 zone: !include_dir_merge_list zones
 
+# Device trackers
+device_tracker:
+  - platform: fritz
+    new_device_defaults:
+      track_new_devices: false
+      hide_if_away: false
+  - platform: bluetooth_tracker
+    interval_seconds: 15
+    consider_home: 150
+    track_new_devices: false
+    request_rssi: true
+    new_device_defaults:
+      track_new_devices: false
+      hide_if_away: false
+  - platform: google_maps
+    username: !secret google_maps_email
+    new_device_defaults:
+      track_new_devices: false
+      hide_if_away: false
+
 # Google calendar
 google:
   client_id: !secret google_client_id
