@@ -1,0 +1,8 @@
+  - platform: broadlink
+    name: 'Broadlink'
+    host: !secret broadlink_woonkamer_ip
+    mac: !secret broadlink_woonkamer_mac
+    type: rm_mini_3
+    timeout: 15
+
+        
