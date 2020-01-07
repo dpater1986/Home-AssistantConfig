@@ -19,7 +19,6 @@ binary_sensor: !include_dir_merge_list binary_sensors
 # device_tracker: !include_dir_merge_named device_trackers 
 input_boolean: !include_dir_merge_named input_booleans
 light: !include_dir_merge_list lights
-remote: !include_dir_merge_list remotes
 sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_list switch
 timer: !include_dir_merge_named timers
