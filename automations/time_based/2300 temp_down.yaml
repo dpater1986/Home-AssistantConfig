@@ -19,18 +19,3 @@
       data:
         entity_id: climate.toon_thermostat
         temperature: 18
-
-- id: temp_to_wakeup
-  alias: Tempetatuur op opstaan
-  trigger:
-  - platform: time
-    at: "06:00:00"
-  action:
-    - service: climate.set_preset_mode
-      data:
-        entity_id: climate.toon_thermostat
-        preset_mode: 'Home'
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.toon_thermostat
-        temperature: 20
