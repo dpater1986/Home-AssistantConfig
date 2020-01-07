@@ -48,7 +48,7 @@ device_tracker:
 google_assistant:
   project_id: !secret google_client_id
   api_key: !secret google_client_secret
-  service_account: !include SERVICE_ACCOUNT.JSON
+  service_account: !include Hassio-0980c800dc9e.json
   report_state: true
   exposed_domains:
     - switch
