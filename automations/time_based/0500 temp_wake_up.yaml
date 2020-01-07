@@ -13,9 +13,6 @@
     - service: climate.set_preset_mode
       data:
         entity_id: climate.toon_thermostat
-        preset_mode: 'Home' 
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.toon_thermostat
-        temperature: 18
+        preset_mode: 'Home' # Home temperature is set to 18C
+
    
