@@ -20,9 +20,10 @@
 .cloud
 .google.token
 
-# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+# Ensure these files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
 google_calendars.yaml
 .google_maps_location_sharing.*
+Hassio-0980c800dc9e.json
