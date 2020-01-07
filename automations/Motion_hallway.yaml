@@ -3,7 +3,9 @@
 ######################################################################
 #   Input is motion dectection
 
-# Hallway lights on
+#######################
+## Hallway lights on ##
+#######################
 - alias: Hal lamp aan
   hide_entity: true
 
@@ -21,12 +23,15 @@
       - condition: sun
         before: sunrise
         before_offset: "01:00:00"
+      - condition: state
+        entity_id: input_boolean.cleaning
+        state: 'on'
 
   action:
     - service: light.turn_on
       data:
         entity_id: light.0x14b457fffe44351d_light
-    - condition: and ### Stop controling brightness when morning routine is active.
+    - condition: and ### Stop controling brightness when morning routine or cleaning is active.
       conditions:
       - condition: state
         entity_id: input_boolean.morning_routine_dennis
@@ -34,13 +39,18 @@
       - condition: state
         entity_id: input_boolean.morning_routine_minou
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.cleaning
+        state: 'off'
     - service: light.turn_on
       data:
         entity_id: light.0x14b457fffe44351d_light
         transition: 20
         brightness: 100
 
-# Hallway lights off
+########################
+## Hallway lights off ##
+########################
 - alias: Hal lamp uit
   hide_entity: true
 
@@ -50,8 +60,9 @@
     to: 'off'
     for:
       minutes: 2
+  
   action:
     service: light.turn_off
     data:
       entity_id: light.0x14b457fffe44351d_light
-      transition: 30
+      transition: 60
