@@ -1,9 +1,14 @@
+######################################################################
+##  Temperature to wake-up
+######################################################################
 
+
+# Themperature
 - id: temp_to_wakeup
   alias: Tempetatuur op opstaan
   trigger:
   - platform: time
-    at: "06:00:00"
+    at: "05:00:00"
   action:
     - service: climate.set_preset_mode
       data:
@@ -12,5 +17,5 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.toon_thermostat
-        temperature: 20
+        temperature: 19
    
