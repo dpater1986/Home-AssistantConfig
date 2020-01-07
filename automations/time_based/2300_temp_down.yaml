@@ -14,4 +14,4 @@
     - service: climate.set_preset_mode
       data:
         entity_id: climate.toon_thermostat
-        preset_mode: 'Sleep'
+        preset_mode: 'Sleep' # Temperature is set to 15C
