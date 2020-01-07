@@ -44,6 +44,27 @@ device_tracker:
       track_new_devices: false
       hide_if_away: false
 
+# Google Assistant
+google_assistant:
+  project_id: !secret google_client_id
+  api_key: !secret google_client_secret
+  service_account: !include SERVICE_ACCOUNT.JSON
+  report_state: true
+  exposed_domains:
+    - switch
+    - light
+  entity_config:
+    switch.kitchen:
+      name: CUSTOM_NAME_FOR_GOOGLE_ASSISTANT
+      aliases:
+        - BRIGHT_LIGHTS
+        - ENTRY_LIGHTS
+    light.living_room:
+      expose: false
+      room: LIVING_ROOM
+    group.all_automations:
+      expose: false
+
 # Google calendar
 google:
   client_id: !secret google_client_id
