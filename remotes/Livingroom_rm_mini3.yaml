@@ -2,3 +2,9 @@
   host: !secret broadlink_woonkamer_ip
   mac: !secret broadlink_woonkamer_mac
   name: Broadlink_woonkamer
+  type: 'rm_mini'
+- platform: broadlink
+  host: !secret broadlink_slaapkamer_ip
+  mac: !secret broadlink_slaapkamer_mac
+  name: Broadlink_slaapkamer
+  type: 'rm_mini'
