@@ -1,0 +1,15 @@
+- id: cleaning
+  name: Schoonmaken
+  entities:
+    climate.toon_thermostat:
+      temperature: 17
+    group.lamp_woonkamer_plafon:
+      state: on
+      transition: 180
+      brightness: 200
+#      kelvin
+    group.lamp_eetkamer_plafon:
+      state: on
+      transition: 180
+      brightness: 200
+#      kelvin
