@@ -1,3 +1,4 @@
 - platform: broadlink
   host: !secret broadlink_woonkamer_ip
   mac: !secret broadlink_woonkamer_mac
+  name: Broadlink_woonkamer
