@@ -18,4 +18,4 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.toon_thermostat
-        temperature: 18
+        temperature: 15
