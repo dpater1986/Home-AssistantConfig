@@ -13,7 +13,7 @@ tts:
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
 script: !include scripts.yaml
-scene: !include_dir_merge_list  scenes
+# scene: !include_dir_merge_list  scenes
 
 binary_sensor: !include_dir_merge_list binary_sensors
 # device_tracker: !include_dir_merge_named device_trackers 
