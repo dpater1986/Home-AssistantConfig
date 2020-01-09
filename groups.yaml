@@ -17,3 +17,16 @@ Lamp_Woonkamer_sfeerlampen:
   entities:
     - light.lamp_woonkamer_wit_tafeltje
     - light.lamp_woonkamer_tv_kast
+Lamp_Slaapkamer_plafon: 
+  name: Lamp Slaapkamer plafon
+  entities:
+    - light.0xccccccfffe4cb4c8_light
+    - light.0x14b457fffe6af1a2_light
+    - light.0xccccccfffe4cb409_light
+  icon: mdi:ceiling-light
+Lamp_Overloop_plafon: 
+  name: Lamp Overloop plafon
+  entities:
+    - light.0x14b457fffe734a95_light
+    - light.0xccccccfffe58da99_light
+  icon: mdi:ceiling-light
