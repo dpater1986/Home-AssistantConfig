@@ -17,7 +17,6 @@ script: !include scripts.yaml
 
 binary_sensor: !include_dir_merge_list binary_sensors
 # device_tracker: !include_dir_merge_named device_trackers 
-devices: !include_dir_merge_named devices
 input_boolean: !include_dir_merge_named input_booleans
 light: !include_dir_merge_list lights
 sensor: !include_dir_merge_list sensors
