@@ -1,0 +1,17 @@
+
+######################################################################
+##  Temperature to sleep
+######################################################################
+
+
+# Themperature
+- id: temp_to_sleep
+  alias: Tempetatuur op slaap modus
+  trigger:
+  - platform: time
+    at: "23:00:00"
+  action:
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.toon_thermostat
+        preset_mode: 'Sleep' # Temperature is set to 15C

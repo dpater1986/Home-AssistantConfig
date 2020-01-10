@@ -1,0 +1,8 @@
+- platform: broadlink
+  host: !secret broadlink_woonkamer_ip
+  mac: !secret broadlink_woonkamer_mac
+  friendly_name: Broadlink_woonkamer
+- platform: broadlink
+  host: !secret broadlink_slaapkamer_ip
+  mac: !secret broadlink_slaapkamer_mac
+  friendly_name: Broadlink_slaapkamer

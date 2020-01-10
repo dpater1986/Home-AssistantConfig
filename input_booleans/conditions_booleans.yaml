@@ -6,6 +6,10 @@ morning_routine_dennis:
 morning_routine_minou:
   name: Ochtend ritueel Minou
   initial: off
+  
+cleaning:
+  name: Schoonmaken
+  initial: off
 
 holliday:
   name: Vakantie modus

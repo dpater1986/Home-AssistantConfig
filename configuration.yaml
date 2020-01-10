@@ -13,13 +13,13 @@ tts:
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
 script: !include scripts.yaml
-scene: !include scenes.yaml
+# scene: !include_dir_merge_list  scenes
 
 binary_sensor: !include_dir_merge_list binary_sensors
 # device_tracker: !include_dir_merge_named device_trackers 
 devices: !include_dir_merge_named devices
 input_boolean: !include_dir_merge_named input_booleans
-# light: !include_dir_merge_named lights
+light: !include_dir_merge_list lights
 sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_list switch
 timer: !include_dir_merge_named timers
@@ -45,38 +45,32 @@ device_tracker:
       track_new_devices: false
       hide_if_away: false
 
+# Google Assistant
+google_assistant:
+  project_id: !secret google_client_id
+  api_key: !secret google_client_secret
+  service_account: !include Hassio-0980c800dc9e.json
+  report_state: true
+  exposed_domains:
+    - switch
+    - light
+  entity_config:
+    switch.kitchen:
+      name: CUSTOM_NAME_FOR_GOOGLE_ASSISTANT
+      aliases:
+        - BRIGHT_LIGHTS
+        - ENTRY_LIGHTS
+    light.living_room:
+      expose: false
+      room: LIVING_ROOM
+    group.all_automations:
+      expose: false
+
 # Google calendar
 google:
   client_id: !secret google_client_id
   client_secret: !secret google_client_secret
   track_new_calendar: false
-
-# Lights
-light:
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 001
-    host: 10.61.2.130
-    token: !secret xiaomi_001
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 002
-    host: 10.61.2.131
-    token: !secret xiaomi_002
-  - platform: xiaomi_miio
-    name: Lamp Woonkamer plafon 003
-    host: 10.61.2.132
-    token: !secret xiaomi_003
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 001
-    host: 10.61.2.133
-    token: !secret xiaomi_004
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 002
-    host: 10.61.2.134
-    token: !secret xiaomi_005
-  - platform: xiaomi_miio
-    name: Lamp Eetkamer plafon 003
-    host: 10.61.2.135
-    token: !secret xiaomi_006
 
 # Panels 
 panel_iframe:
