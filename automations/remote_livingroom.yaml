@@ -19,20 +19,24 @@
       data:
         entity_id: group.lamp_woonkamer_plafon
         transition: 180
-        brightness: 75
-        color_temp: 256
+        brightness: 50
+        color_temp: 333
     - service: light.turn_on
       data:      
         entity_id: group.lamp_woonkamer_sfeerlampen
         transition: 180
-        brightness: 30
-        color_temp: 256
-    - service: light.turn_on
-      data:      
-        entity_id: group.lamp_eetkamer_plafon
-        transition: 180
-        brightness: 75
-        color_temp: 256
+        brightness: 74
+        color_temp: 444
+        hs_color:
+          - 29.189
+          - 14.51
+        rgb_color:
+          - 255
+          - 235
+          - 217
+        xy_color:
+          - 0.359
+          - 0.346
         
 ###############
 ## Remote off ##
@@ -54,3 +58,4 @@
           - group.lamp_woonkamer_sfeerlampen
           - group.lamp_eetkamer_plafon
         
+
