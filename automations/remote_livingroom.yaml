@@ -25,7 +25,7 @@
       data:      
         entity_id: group.lamp_woonkamer_sfeerlampen
         transition: 180
-        brightness: 74
+        brightness: 50
         color_temp: 444
         hs_color:
           - 29.189
