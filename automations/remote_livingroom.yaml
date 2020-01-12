@@ -17,10 +17,19 @@
   action:
     - service: light.turn_on
       data:
-        entity_id:
-          - group.lamp_woonkamer_plafon
-          - group.lamp_woonkamer_sfeerlampen
-          - group.lamp_eetkamer_plafon
+        entity_id: group.lamp_woonkamer_plafon
+        transition: 180
+        brightness: 75
+        color_temp: 256
+    - service: light.turn_on
+      data:      
+        entity_id: group.lamp_woonkamer_sfeerlampen
+        transition: 180
+        brightness: 30
+        color_temp: 256
+    - service: light.turn_on
+      data:      
+        entity_id: group.lamp_eetkamer_plafon
         transition: 180
         brightness: 75
         color_temp: 256
