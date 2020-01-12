@@ -20,13 +20,10 @@
         entity_id:
           - group.lamp_woonkamer_plafon
           - group.lamp_woonkamer_sfeerlampen
+          - group.lamp_eetkamer_plafon
         transition: 180
-        brightness: 50
+        brightness: 75
         color_temp: 256
-        rgb_color:
-          - 255
-          - 235
-          - 217
         
 ###############
 ## Remote off ##
@@ -47,4 +44,4 @@
           - group.lamp_woonkamer_plafon
           - group.lamp_woonkamer_sfeerlampen
           - group.lamp_eetkamer_plafon
-        transition: 180
+        
