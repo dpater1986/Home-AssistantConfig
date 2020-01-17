@@ -3,9 +3,9 @@
 ######################################################################
 #   Input is motion dectection
 
-#######################
+##########################
 ## Livingroom lights on ##
-#######################
+##########################
 - alias: Woonkamer lampen aan
   hide_entity: true
 
@@ -42,9 +42,9 @@
         color_temp: 444
         rgb_color: 255,235,217
 
-########################
+###########################
 ## Livingroom lights off ##
-########################
+###########################
 - alias: Woonkamer lampen uit
   hide_entity: true
 
@@ -53,7 +53,7 @@
     entity_id: binary_sensor.0x00158d000451a9df_occupancy
     to: 'off'
     for:
-      minutes: 180
+      minutes: 90
   
   action:
     - service: light.turn_off
