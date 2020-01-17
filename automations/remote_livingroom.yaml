@@ -27,6 +27,7 @@
         transition: 180
         brightness: 50
         color_temp: 444
+        rgb_color: 255,235,217
         
 ################
 ## Remote off ##
