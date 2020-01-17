@@ -25,7 +25,7 @@
       data:      
         entity_id: group.lamp_overloop_plafon
         transition: 180
-        brightness: 50
+        brightness: 100
         color_temp: 333
         
 ################
