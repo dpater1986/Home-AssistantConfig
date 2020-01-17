@@ -28,9 +28,9 @@
         brightness: 50
         color_temp: 444
         
-###############
+################
 ## Remote off ##
-###############
+################
 - id: remote_click_off
   alias: Remote click off
   hide_entity: true
