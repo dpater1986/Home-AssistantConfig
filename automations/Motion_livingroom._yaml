@@ -25,44 +25,40 @@
         before_offset: "01:00:00"
       - condition: state
         entity_id: input_boolean.cleaning
-        state: 'on'
+        state: 'off'
 
   action:
     - service: light.turn_on
       data:
-        entity_id: light.0x14b457fffe44351d_light
-    - condition: and ### Stop controling brightness when morning routine or cleaning is active.
-      conditions:
-      - condition: state
-        entity_id: input_boolean.morning_routine_dennis
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.morning_routine_minou
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.cleaning
-        state: 'off'
+        entity_id: group.lamp_woonkamer_plafon
+        transition: 180
+        brightness: 50
+        color_temp: 333
     - service: light.turn_on
-      data:
-        entity_id: light.0x14b457fffe44351d_light
-        transition: 20
-        brightness: 100
+      data:      
+        entity_id: group.lamp_woonkamer_sfeerlampen
+        transition: 180
+        brightness: 50
+        color_temp: 444
+        rgb_color: 255,235,217
 
 ########################
-## Hallway lights off ##
+## Livingroom lights off ##
 ########################
-- alias: Hal lamp uit
+- alias: Woonkamer lampen uit
   hide_entity: true
 
   trigger:
     platform: state
-    entity_id: binary_sensor.0x00158d00042427fd_occupancy
+    entity_id: binary_sensor.0x00158d000451a9df_occupancy
     to: 'off'
     for:
-      minutes: 2
+      minutes: 180
   
   action:
-    service: light.turn_off
-    data:
-      entity_id: light.0x14b457fffe44351d_light
-      transition: 60
+    - service: light.turn_off
+      data:
+        entity_id:
+          - group.lamp_woonkamer_plafon
+          - group.lamp_woonkamer_sfeerlampen
+          - group.lamp_eetkamer_plafon
