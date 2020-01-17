@@ -1,0 +1,68 @@
+######################################################################
+##  Motion in livingroom turn lights on and off
+######################################################################
+#   Input is motion dectection
+
+#######################
+## Livingroom lights on ##
+#######################
+- alias: Woonkamer lampen aan
+  hide_entity: true
+
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d000451a9df_occupancy
+    to: 'on'
+
+  condition:
+    - condition: or
+      conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "-01:00:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "01:00:00"
+      - condition: state
+        entity_id: input_boolean.cleaning
+        state: 'on'
+
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+    - condition: and ### Stop controling brightness when morning routine or cleaning is active.
+      conditions:
+      - condition: state
+        entity_id: input_boolean.morning_routine_dennis
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.morning_routine_minou
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.cleaning
+        state: 'off'
+    - service: light.turn_on
+      data:
+        entity_id: light.0x14b457fffe44351d_light
+        transition: 20
+        brightness: 100
+
+########################
+## Hallway lights off ##
+########################
+- alias: Hal lamp uit
+  hide_entity: true
+
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d00042427fd_occupancy
+    to: 'off'
+    for:
+      minutes: 2
+  
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.0x14b457fffe44351d_light
+      transition: 60
