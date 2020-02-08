@@ -39,14 +39,6 @@
     to: 'off'
 
   action:
-    - service: light.turn_on
-      data:
-        entity_id:
-          - group.lamp_slaapkamer_plafon
-          - group.lamp_overloop_plafon
-        transition: 30
-        brightness: 5
-    - delay: "00:00:30"
     - service: light.turn_off
       data:
         entity_id:
