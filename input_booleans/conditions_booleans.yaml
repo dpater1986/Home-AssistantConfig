@@ -14,3 +14,7 @@ cleaning:
 holliday:
   name: Vakantie modus
   initial: off
+
+summer_modus:
+  name: Zomer modus
+  initial: off
