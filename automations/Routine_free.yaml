@@ -15,13 +15,13 @@
   
   action:
     - condition: or
-        conditions:
-          - condition: state
-            entity_id: input_boolean.holliday_modus
-            state: 'off'
-          - condition: state
-            entity_id: input_boolean.summer_modus
-            state: 'off'
+      conditions:
+        - condition: state
+          entity_id: input_boolean.holliday_modus
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.summer_modus
+          state: 'off'
     - service: climate.set_preset_mode
       data:
         entity_id: climate.toon_thermostat
