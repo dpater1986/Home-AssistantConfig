@@ -7,7 +7,6 @@
 ## Hallway lights on ##
 #######################
 - alias: Hal lamp aan
-  hide_entity: true
 
   trigger:
     platform: state
@@ -52,7 +51,6 @@
 ## Hallway lights off ##
 ########################
 - alias: Hal lamp uit
-  hide_entity: true
 
   trigger:
     platform: state
