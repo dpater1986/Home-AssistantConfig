@@ -7,7 +7,6 @@
 ###############
 - id: bedroom_remote_click_on
   alias: Bedroom remote click on
-  hide_entity: true
   
   trigger:
     platform: state
@@ -33,7 +32,6 @@
 ################
 - id: bedroom_remote_click_off
   alias: Bedroom remote click off
-  hide_entity: true
   
   trigger:
     platform: state
