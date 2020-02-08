@@ -28,9 +28,6 @@
     - condition: state
       entity_id: input_boolean.morning_routine_dennis
       state: 'off'
-    - condition: state
-      entity_id: input_boolean.morning_routine_minou
-      state: 'off'
 
   action:
     - service: light.turn_on
