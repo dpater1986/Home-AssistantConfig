@@ -7,7 +7,6 @@
 ###############
 - id: remote_click_on
   alias: Remote click on
-  hide_entity: true
   
   trigger:
     platform: state
@@ -34,7 +33,6 @@
 ################
 - id: remote_click_off
   alias: Remote click off
-  hide_entity: true
   
   trigger:
     platform: state
