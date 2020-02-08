@@ -7,7 +7,6 @@
 ## Frontdoor lights on ##
 #########################
 - alias: Hal lamp aan
-  hide_entity: true
 
   trigger:
     platform: state
@@ -35,7 +34,6 @@
 ## Frontdoor lights off ##
 ##########################
 - alias: Hal lamp uit
-  hide_entity: true
 
   trigger:
     platform: state
