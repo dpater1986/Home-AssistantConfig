@@ -10,16 +10,6 @@
     platform: template
     value_template: "{{ ((as_timestamp(states.calendar.minou_werk.attributes.start_time) - as_timestamp(states.sensor.time.last_changed)) < 7200) }}"
 
-  condition:
-    condition: or  # 'when dark' condition: either after sunset or before sunrise - equivalent to a state condition on `sun.sun` of `below_horizon`
-    conditions:
-      - condition: sun
-        after: sunset
-        after_offset: "-02:00:00"
-      - condition: sun
-        before: sunrise
-        before_offset: "02:00:00"
-
   action:
     - service: input_boolean.turn_on
       data:
@@ -32,25 +22,49 @@
     - service: light.turn_on
       data:
         entity_id: light.0x14b457fffe44351d_light
-        brightness: 1
-    - service: light.turn_on
-      data:
-        entity_id: light.0x14b457fffe44351d_light
         transition: 180 # 3 mins to bright light
-        brightness: 200
-    - delay: "00:5:00" # make-up time
+        brightness: 100
+    - delay: "00:5:00"
     - service: light.turn_on
       data:
         entity_id:
           - group.lamp_woonkamer_plafon
           - group.lamp_eetkamer_plafon
+          #- group.lamp_keuken_plafon
         transition: 120
-        brightness: 150
+        brightness: 50
+
+## Livingroom cieling light on motion
+- alias: Woonkamer plafon aan Minou
+
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d0004508239_occupancy
+    to: 'on'
+    
+  condition:
+    - condition: state
+      entity_id: input_boolean.morning_routine_minou
+      state: 'on'
+
+  action:
     - service: light.turn_on
       data:
-        entity_id: light.0x14b457fffe44351d_light
-        brightness: 50
-    - delay: '01:10:00'
+        entity_id: group.lamp_woonkamer_plafon
+        transition: 180 # 3 mins to bright light
+        brightness: 225
+
+## Input boolean turn back off
+- alias: Minou haar ochtendroutine uit
+  
+  trigger:
+    platform: state
+    entity_id: input_boolean.morning_routine_minou
+    to: 'on'
+    for:
+      hours: 3
+    
+  action:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.morning_routine_minou
