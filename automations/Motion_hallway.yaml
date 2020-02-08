@@ -25,22 +25,14 @@
       - condition: state
         entity_id: input_boolean.cleaning
         state: 'on'
+    - condition: state
+      entity_id: input_boolean.morning_routine_dennis
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.morning_routine_minou
+      state: 'off'
 
   action:
-    - service: light.turn_on
-      data:
-        entity_id: light.0x14b457fffe44351d_light
-    - condition: and ### Stop controling brightness when morning routine or cleaning is active.
-      conditions:
-      - condition: state
-        entity_id: input_boolean.morning_routine_dennis
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.morning_routine_minou
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.cleaning
-        state: 'off'
     - service: light.turn_on
       data:
         entity_id: light.0x14b457fffe44351d_light
