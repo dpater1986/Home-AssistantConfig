@@ -5,7 +5,6 @@
 
 # Renew cert
 - alias: Enable Renew certificate
-  hide_entity: true
 
   trigger:
   - platform: state
