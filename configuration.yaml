@@ -29,7 +29,6 @@ device_tracker:
   - platform: fritz
     new_device_defaults:
       track_new_devices: false
-      hide_if_away: false
   - platform: bluetooth_tracker
     interval_seconds: 15
     consider_home: 150
@@ -37,33 +36,10 @@ device_tracker:
     request_rssi: true
     new_device_defaults:
       track_new_devices: false
-      hide_if_away: false
   - platform: google_maps
     username: !secret google_maps_email
     new_device_defaults:
       track_new_devices: false
-      hide_if_away: false
-
-# Google Assistant
-#google_assistant:
-#  project_id: !secret google_client_id
-#  api_key: !secret google_client_secret
-#  service_account: !include Hassio-0980c800dc9e.json
-#  report_state: true
-#  exposed_domains:
-#    - switch
-#    - light
-#  entity_config:
-#    switch.kitchen:
-#      name: CUSTOM_NAME_FOR_GOOGLE_ASSISTANT
-#      aliases:
-#        - BRIGHT_LIGHTS
-#        - ENTRY_LIGHTS
-#    light.living_room:
-#      expose: false
-#      room: LIVING_ROOM
-#    group.all_automations:
-#      expose: false
 
 # Google calendar
 google:
