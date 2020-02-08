@@ -1,0 +1,52 @@
+######################################################################
+##  Remote control livingroom (on/off)
+######################################################################
+
+###############
+## Remote on ##
+###############
+- id: remote_click_on
+  alias: Remote click on
+  hide_entity: true
+  
+  trigger:
+    platform: state
+    entity_id: sensor.0x14b457fffe6e71f6_click
+    to: 'on'
+
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: group.lamp_woonkamer_plafon
+        transition: 180
+        brightness: 50
+        color_temp: 333
+    - service: light.turn_on
+      data:      
+        entity_id: group.lamp_woonkamer_sfeerlampen
+        transition: 180
+        brightness: 50
+        color_temp: 444
+        rgb_color: 255,235,217
+        
+################
+## Remote off ##
+################
+- id: remote_click_off
+  alias: Remote click off
+  hide_entity: true
+  
+  trigger:
+    platform: state
+    entity_id: sensor.0x14b457fffe6e71f6_click
+    to: 'off'
+
+  action:
+    - service: light.turn_off
+      data:
+        entity_id:
+          - group.lamp_woonkamer_plafon
+          - group.lamp_woonkamer_sfeerlampen
+          - group.lamp_eetkamer_plafon
+        
+

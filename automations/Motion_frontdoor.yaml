@@ -29,7 +29,7 @@
       data:
         entity_id: light.0x14b457fffe52867d_light
         transition: 30
-        brightness: 100
+        brightness: 200
 
 ##########################
 ## Frontdoor lights off ##

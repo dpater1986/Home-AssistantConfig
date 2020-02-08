@@ -1,18 +1,31 @@
 ######################################################################
-##  Remote control livingroom (on/off)
+##  Motion in livingroom turn lights on and off
 ######################################################################
+#   Input is motion dectection
 
-###############
-## Remote on ##
-###############
-- id: remote_click_on
-  alias: Remote click on
+##########################
+## Livingroom lights on ##
+##########################
+- alias: Woonkamer lampen aan
   hide_entity: true
-  
+
   trigger:
     platform: state
-    entity_id: sensor.0x14b457fffe6e71f6_click
+    entity_id: binary_sensor.0x00158d000451a9df_occupancy
     to: 'on'
+
+  condition:
+    - condition: or
+      conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "-01:00:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "01:00:00"
+      - condition: state
+        entity_id: input_boolean.cleaning
+        state: 'off'
 
   action:
     - service: light.turn_on
@@ -27,29 +40,21 @@
         transition: 180
         brightness: 50
         color_temp: 444
-        hs_color:
-          - 29.189
-          - 14.51
-        rgb_color:
-          - 255
-          - 235
-          - 217
-        xy_color:
-          - 0.359
-          - 0.346
-        
-###############
-## Remote off ##
-###############
-- id: remote_click_off
-  alias: Remote click off
+        rgb_color: 255,235,217
+
+###########################
+## Livingroom lights off ##
+###########################
+- alias: Woonkamer lampen uit
   hide_entity: true
-  
+
   trigger:
     platform: state
-    entity_id: sensor.0x14b457fffe6e71f6_click
+    entity_id: binary_sensor.0x00158d000451a9df_occupancy
     to: 'off'
-
+    for:
+      minutes: 90
+  
   action:
     - service: light.turn_off
       data:
@@ -57,5 +62,3 @@
           - group.lamp_woonkamer_plafon
           - group.lamp_woonkamer_sfeerlampen
           - group.lamp_eetkamer_plafon
-        
-
