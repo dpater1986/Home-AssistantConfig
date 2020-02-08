@@ -9,7 +9,6 @@
 #####################
 - id: toilet_light_on
   alias: Toilet lamp aan
-  hide_entity: true
   
   trigger:
   - platform: state
@@ -48,7 +47,6 @@
 ######################
 - id: toilet_lights_off
   alias: Toilet lamp uit 
-  hide_entity: true
 
   trigger:
     platform: state
