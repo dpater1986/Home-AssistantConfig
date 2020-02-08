@@ -7,7 +7,6 @@
 ## Livingroom lights on ##
 ##########################
 - alias: Woonkamer lampen aan
-  hide_entity: true
 
   trigger:
     platform: state
@@ -46,7 +45,6 @@
 ## Livingroom lights off ##
 ###########################
 - alias: Woonkamer lampen uit
-  hide_entity: true
 
   trigger:
     platform: state
