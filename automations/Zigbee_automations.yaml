@@ -5,7 +5,6 @@
 
 # Eneble Zigbee joining
 - alias: Enable Zigbee joining
-  hide_entity: true
 
   trigger:
     platform: state
