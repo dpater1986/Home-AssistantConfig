@@ -1,4 +1,7 @@
 #conditions
+sleep_modus:
+  name: Slapen
+  initial: off
 morning_routine_dennis:
   name: Ochtend ritueel Dennis
   initial: off
@@ -7,11 +10,11 @@ morning_routine_minou:
   name: Ochtend ritueel Minou
   initial: off
   
-cleaning:
+cleaning_modus:
   name: Schoonmaken
   initial: off
 
-holliday:
+holliday_modus:
   name: Vakantie modus
   initial: off
 
