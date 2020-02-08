@@ -14,14 +14,14 @@
       value_template: "{{ ((as_timestamp(states.calendar.minou_werk.attributes.end_time) - as_timestamp(states.sensor.time.last_changed)) < 3600) }}"
   
   action:
-    - condition: or
-        conditions:
-          - condition: state
-            entity_id: input_boolean.holliday_modus
-            state: 'off'
-          - condition: state
-            entity_id: input_boolean.summer_modus
-            state: 'off'
+#    - condition: or
+ #       conditions:
+  #        - condition: state
+   #         entity_id: input_boolean.holliday_modus
+    #        state: 'off'
+     #     - condition: state
+      #      entity_id: input_boolean.summer_modus
+       #     state: 'off'
     - service: climate.set_preset_mode
       data:
         entity_id: climate.toon_thermostat
