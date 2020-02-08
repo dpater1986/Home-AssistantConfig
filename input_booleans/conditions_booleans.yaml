@@ -2,6 +2,7 @@
 sleep_modus:
   name: Slapen
   initial: off
+
 morning_routine_dennis:
   name: Ochtend ritueel Dennis
   initial: off
