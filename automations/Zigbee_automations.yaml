@@ -60,7 +60,6 @@
 
 # Update Zibee network map
 - alias: 'Zigbee Map aktualisieren'  
-  hide_entity: true  
 
   trigger:
     platform: time_pattern
