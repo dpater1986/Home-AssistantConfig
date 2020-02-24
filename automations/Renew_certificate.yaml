@@ -12,7 +12,7 @@
     to: 'on'
   - platform: numeric_state
     entity_id: sensor.ssl_certificate_expiry 
-    below: 7
+    below: 31
 
   action:
   - service: hassio.addon_start
