@@ -37,10 +37,8 @@
   - data:
       entity_id: timer.zigbee_permit_join
     service: timer.cancel
-  hide_entity: true
 
 - alias: Disable Zigbee joining by timer
-  hide_entity: true
 
   trigger:
   - platform: event
