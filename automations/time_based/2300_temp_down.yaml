@@ -4,8 +4,7 @@
 
 
 # Themperature
-- id: temp_to_sleep
-  alias: Tempetatuur op slaap modus
+- alias: Tempetatuur op slaap modus
   trigger:
   - platform: time
     at: "23:00:00"
