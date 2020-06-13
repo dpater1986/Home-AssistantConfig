@@ -5,8 +5,7 @@
 
 
 # Themperature
-- id: temp_to_wakeup
-  alias: Tempetatuur op opstaan
+- alias: Tempetatuur op opstaan
   trigger:
   - platform: time
     at: "10:00:00"
