@@ -45,29 +45,21 @@
           - group.lamp_slaapkamer_plafon
           - group.lamp_overloop_plafon
 
-- id: '1598118194391'
-  alias: Remote brightness up
-  description: ''
-  trigger:
-  - device_id: afcd49b664854c069aa09475d920c4d5
-    discovery_id: 0x14b457fffe6b0317 click_brightness_up
-    domain: mqtt
-    platform: device
-    subtype: brightness_up
-    type: click
-  condition: []
-  action:
-  - device_id: 0ca0281656e84b86974bce152139047b
-    domain: light
-    entity_id: light.0xccccccfffe4cb4c8_light
-    type: brightness_increase
-  - device_id: f1444d756e764c07a61cb3ed1d5c1635
-    domain: light
-    entity_id: light.0x14b457fffe6af1a2_light
-    type: brightness_increase
-  - device_id: 50d399700b46497688808be8aef911ad
-    domain: light
-    entity_id: light.0xccccccfffe4cb409_light
-    type: brightness_increase
-  mode: single
+#######################
+## Remote brightness ##
+#######################
 
+- id: bedroom_romete_brightness_up
+  alias: Remote brightness up
+  
+  trigger:
+    platform: state
+    entity-id: sensor.0x14b457fffe6b0317_click
+    to: 'brightness_move_up'
+   
+  action:
+    - service: automation.turn_off
+      data:
+        entity_id:
+          - automation.bedroom_romete_brightness_up
+  
