@@ -48,18 +48,53 @@
 #######################
 ## Remote brightness ##
 #######################
-
-- id: bedroom_romete_brightness_up
-  alias: Remote brightness up
+- id: bedroom_remote_brightness_up
+  alias: 'Make the lights go bright'
+  initial_state: 'on'
   
   trigger:
     platform: state
     entity-id: sensor.0x14b457fffe6b0317_click
     to: 'brightness_move_up'
-   
+ 
   action:
-    - service: automation.turn_off
+    - service: script.turn_on
+      entity_id: script.ramp_light
       data:
-        entity_id:
-          - automation.bedroom_romete_brightness_up
+        variables:
+          direction: up
+          light:
+            - group.lamp_slaapkamer_plafon
+            - group.lamp_overloop_plafon
+
+- id: bedroom_remote_brightness_down
+  alias: 'Make the lights go dim'
+  initial_state: 'on'
   
+  trigger:
+   platform: state
+   entity-id: sensor.0x14b457fffe6b0317_click
+    to: 'brightness_move_down'
+    
+  action:
+    - service: script.turn_on
+      entity_id: script.ramp_light
+      data:
+        variables:
+          direction: down
+          light:
+            - group.lamp_slaapkamer_plafon
+            - group.lamp_overloop_plafon
+          
+- id: bedroom_remote_brightness_stop
+  alias: 'Stop the light just there'
+  initial_state: 'on'
+
+  trigger:
+    platform: state
+    entity-id: sensor.0x14b457fffe6b0317_click
+    to: 'brightness_stop'
+    
+  action:
+    - service: script.turn_off
+      entity_id: script.ramp_light
