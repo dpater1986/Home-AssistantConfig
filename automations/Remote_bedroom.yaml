@@ -74,7 +74,7 @@
   trigger:
    platform: state
    entity-id: sensor.0x14b457fffe6b0317_click
-    to: 'brightness_move_down'
+   to: 'brightness_move_down'
     
   action:
     - service: script.turn_on
