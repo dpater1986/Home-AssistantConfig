@@ -15,6 +15,9 @@ ramp_light:
           - condition: template
             value_template: >
               {% set br = state_attr(light, 'brightness')|int(0) %}
+              {% if value = 0 %}
+                 {% set br = state_attr(state_attr(light, 'entity_id'), 'brightness')|int(0) %}
+              {% endif %}
               {% set mn = states('input_number.light_minimum')|int %}
               {% set mx = states('input_number.light_maximum')|int %}
               {{ direction == 'up' and br < mx or
@@ -25,6 +28,9 @@ ramp_light:
               entity_id: "{{ light }}"
               brightness: >
                 {% set br = state_attr(light, 'brightness')|int(0) %}
+                {% if value = 0 %}
+                  {% set br = state_attr(state_attr(light, 'entity_id'), 'brightness')|int(0) %}
+                {% endif %}
                 {% set mn = states('input_number.light_minimum')|int %}
                 {% set mx = states('input_number.light_maximum')|int %}
                 {% set st = states('input_number.light_step')|int %}
