@@ -2,7 +2,7 @@
   name: 'Muur lamp'
   state_topic: 'tasmota/outside/wall1/stat/POWER'
   command_topic: 'tasmota/outside/wall1/cmnd/POWER'
-  availability_topic: 'tasmota/outside/wall1/tele/STATE'
+  availability_topic: 'tasmota/outside/wall1/tele/LWT'
   qos: 1
   payload_on: 'ON'
   payload_off: 'OFF'
