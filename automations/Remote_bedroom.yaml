@@ -54,7 +54,7 @@
   
   trigger:
     platform: state
-    entity-id: sensor.0x14b457fffe6b0317_click
+    entity_id: sensor.0x14b457fffe6b0317_click
     to: 'brightness_move_up'
  
   action:
@@ -71,7 +71,7 @@
   
   trigger:
    platform: state
-   entity-id: sensor.0x14b457fffe6b0317_click
+   entity_id: sensor.0x14b457fffe6b0317_click
    to: 'brightness_move_down'
     
   action:
@@ -88,7 +88,7 @@
 
   trigger:
     platform: state
-    entity-id: sensor.0x14b457fffe6b0317_click
+    entity_id: sensor.0x14b457fffe6b0317_click
     to: 'brightness_stop'
     
   action:
