@@ -63,9 +63,7 @@
       data:
         variables:
           direction: up
-          light:
-            - group.lamp_slaapkamer_plafon
-            - group.lamp_overloop_plafon
+          light: group.lamp_slaapkamer_plafon
 
 - id: bedroom_remote_brightness_down
   alias: 'Make the lights go dim'
@@ -82,9 +80,7 @@
       data:
         variables:
           direction: down
-          light:
-            - group.lamp_slaapkamer_plafon
-            - group.lamp_overloop_plafon
+          light: group.lamp_slaapkamer_plafon
           
 - id: bedroom_remote_brightness_stop
   alias: 'Stop the light just there'
