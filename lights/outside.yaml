@@ -20,7 +20,7 @@
   brightness_scale: 100
   color_temp_state_topic: 'tasmota/outside/wall1/stat/CT'
   color_temp_command_topic: 'tasmota/outside/wall1/cmnd/CT' 
-  qos: 0
+  qos: 1
   payload_on: "ON"
   payload_off: "OFF"
   optimistic: false
