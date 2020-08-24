@@ -17,9 +17,11 @@
   availability_topic: 'tasmota/outside/wall1/tele/LWT'
   brightness_state_topic: 'tasmota/outside/wall1/stat/Dimmer'
   brightness_command_topic: 'tasmota/outside/wall1/cmnd/Dimmer'
+  brightness_value_template: '{{ value_json.brightness }}'
   brightness_scale: 100
   color_temp_state_topic: 'tasmota/outside/wall1/stat/CT'
   color_temp_command_topic: 'tasmota/outside/wall1/cmnd/CT' 
+  color_temp_value_template: '{{ value_json.CT }}' 
   qos: 1
   payload_on: "ON"
   payload_off: "OFF"
