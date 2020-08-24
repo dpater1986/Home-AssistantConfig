@@ -83,8 +83,8 @@
           light: group.lamp_slaapkamer_plafon
     - service: light.turn_on         
       data:
-	entity_id:
-	- group.lamp_woonkamer_plafon
+        entity_id:
+          - group.lamp_woonkamer_plafon
 
  
 - id: bedroom_remote_brightness_stop
