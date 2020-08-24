@@ -80,12 +80,10 @@
       data:
         variables:
           direction: down
-          light: group.lamp_slaapkamer_plafon
-    - service: light.turn_on         
-      data:
-        entity_id:
-          - group.lamp_woonkamer_plafon
-
+          light: 
+            - light.lamp_eetkamer_plafon_001
+            - light.lamp_eetkamer_plafon_002
+            - light.lamp_eetkamer_plafon_003
  
 - id: bedroom_remote_brightness_stop
   alias: 'Stop the light just there'
