@@ -9,3 +9,21 @@
   payload_available: Online
   payload_not_available: Offline
   retain: false
+
+- platform: mqtt
+  name: 'Buitenlamp muur'
+  state_topic: 'tasmota/outside/wall1/stat/POWER'
+  command_topic: 'tasmota/outside/wall1/cmnd/POWER'
+  availability_topic: 'tasmota/outside/wall1/tele/LWT'
+  brightness_state_topic: 'tasmota/outside/wall1/dimmer/stat'
+  brightness_command_topic: 'tasmota/outside/wall1/dimmer/cmnd'
+  brightness_scale: 100
+  color_temp_state_topic: 'tasmota/outside/wall1/CT/stat'
+  color_temp_command_topic: 'tasmota/outside/wall1/CT/cmnd' 
+  qos: 0
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  payload_available: Online
+  payload_not_available: Offline
+  retain: false
