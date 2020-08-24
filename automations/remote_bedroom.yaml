@@ -63,7 +63,7 @@
       data:
         variables:
           direction: up
-          light: light.lamp_slaapkamer_plafon_001
+          light: light.0xccccccfffe4cb4c8_light
           lights: group.lamp_slaapkamer_plafon
 
 - id: bedroom_remote_brightness_down
@@ -81,7 +81,7 @@
       data:
         variables:
           direction: down
-          light: light.lamp_slaapkamer_plafon_001
+          light: light.0xccccccfffe4cb4c8_light
           lights: group.lamp_slaapkamer_plafon
  
 - id: bedroom_remote_brightness_stop
