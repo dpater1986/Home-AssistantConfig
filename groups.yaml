@@ -30,3 +30,9 @@ Lamp_Overloop_plafon:
     - light.0x14b457fffe734a95_light
     - light.0xccccccfffe58da99_light
   icon: mdi:ceiling-light
+Lamp_Buitenlamp_Hek:
+  name: Lamp Hek Buiten
+  entities:
+    - light.buitenlamp_hek_1
+    - light.buitenlamp_hek_2
+    - light.buitenlamp_hek_3
