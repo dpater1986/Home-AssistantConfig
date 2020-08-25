@@ -36,3 +36,9 @@ Lamp_Buitenlamp_Hek:
     - light.buitenlamp_hek_1
     - light.buitenlamp_hek_2
     - light.buitenlamp_hek_3
+Lamp_Buiten:
+  name: Lamp Buiten
+  entities:
+    - group.Lamp_Buiten_Hek
+    - light.buitenlamp_wall
+    - light.buitenlamp_cabin
