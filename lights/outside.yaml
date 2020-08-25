@@ -1,16 +1,5 @@
 - platform: mqtt
-  name: 'Muur lamp'
-  state_topic: 'tasmota/outside/wall1/stat/POWER'
-  command_topic: 'tasmota/outside/wall1/cmnd/POWER'
-  availability_topic: 'tasmota/outside/wall1/tele/LWT'
-  qos: 1
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  payload_available: Online
-  payload_not_available: Offline
-  retain: false
-
-- platform: mqtt
+  id: outside_wall1_light
   name: 'Buitenlamp muur'
   state_topic: 'tasmota/outside/wall1/stat/POWER'
   command_topic: 'tasmota/outside/wall1/cmnd/POWER'
@@ -29,3 +18,88 @@
   payload_available: Online
   payload_not_available: Offline
   retain: false
+
+- platform: mqtt
+  id: outside_fence1_light
+  name: 'Buitenlamp hek 1'
+  state_topic: 'tasmota/outside/fence1/stat/POWER'
+  command_topic: 'tasmota/outside/fence1/cmnd/POWER'
+  availability_topic: 'tasmota/outside/fence1/tele/LWT'
+  brightness_state_topic: 'tasmota/outside/fence1/stat/RESULT'
+  brightness_command_topic: 'tasmota/outside/fence1/cmnd/Dimmer'
+  brightness_scale: 100
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  color_temp_state_topic: 'tasmota/outside/fence1/stat/RESULT'
+  color_temp_command_topic: 'tasmota/outside/fence1/cmnd/CT'
+  color_temp_value_template: "{{ value_json.CT }}"
+  qos: 0
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  payload_available: Online
+  payload_not_available: Offline
+  retain: false
+
+- platform: mqtt
+  id: outside_fence2_light
+  name: 'Buitenlamp hek 2'
+  state_topic: 'tasmota/outside/fence2/stat/POWER'
+  command_topic: 'tasmota/outside/fence2/cmnd/POWER'
+  availability_topic: 'tasmota/outside/fence2/tele/LWT'
+  brightness_state_topic: 'tasmota/outside/fence2/stat/RESULT'
+  brightness_command_topic: 'tasmota/outside/fence2/cmnd/Dimmer'
+  brightness_scale: 100
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  color_temp_state_topic: 'tasmota/outside/fence2/stat/RESULT'
+  color_temp_command_topic: 'tasmota/outside/fence2/cmnd/CT'
+  color_temp_value_template: "{{ value_json.CT }}"
+  qos: 0
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  payload_available: Online
+  payload_not_available: Offline
+  retain: false
+
+- platform: mqtt
+  id: outside_fence3_light
+  name: 'Buitenlamp hek 3'
+  state_topic: 'tasmota/outside/fence3/stat/POWER'
+  command_topic: 'tasmota/outside/fence3/cmnd/POWER'
+  availability_topic: 'tasmota/outside/fence3/tele/LWT'
+  brightness_state_topic: 'tasmota/outside/fence3/stat/RESULT'
+  brightness_command_topic: 'tasmota/outside/fence3/cmnd/Dimmer'
+  brightness_scale: 100
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  color_temp_state_topic: 'tasmota/outside/fence3/stat/RESULT'
+  color_temp_command_topic: 'tasmota/outside/fence3/cmnd/CT'
+  color_temp_value_template: "{{ value_json.CT }}"
+  qos: 0
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  payload_available: Online
+  payload_not_available: Offline
+  retain: false
+
+- platform: mqtt
+  id: outside_cabin1_light
+  name: 'Buitenlamp tuinhuisje'
+  state_topic: 'tasmota/outside/cabin1/stat/POWER'
+  command_topic: 'tasmota/outside/cabin1/cmnd/POWER'
+  availability_topic: 'tasmota/outside/cabin1/tele/LWT'
+  brightness_state_topic: 'tasmota/outside/cabin1/stat/RESULT'
+  brightness_command_topic: 'tasmota/outside/cabin1/cmnd/Dimmer'
+  brightness_scale: 100
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  color_temp_state_topic: 'tasmota/outside/cabin1/stat/RESULT'
+  color_temp_command_topic: 'tasmota/outside/cabin1/cmnd/CT'
+  color_temp_value_template: "{{ value_json.CT }}"
+  qos: 0
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  payload_available: Online
+  payload_not_available: Offline
+  retain: false
+
