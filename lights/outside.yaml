@@ -15,11 +15,13 @@
   state_topic: 'tasmota/outside/wall1/stat/POWER'
   command_topic: 'tasmota/outside/wall1/cmnd/POWER'
   availability_topic: 'tasmota/outside/wall1/tele/LWT'
-  brightness_state_topic: 'tasmota/outside/wall1/dimmer/stat'
-  brightness_command_topic: 'tasmota/outside/wall1/dimmer/cmnd'
+  brightness_state_topic: 'tasmota/outside/wall1/stat/RESULT'
+  brightness_command_topic: 'tasmota/outside/wall1/cmnd/Dimmer'
   brightness_scale: 100
-  color_temp_state_topic: 'tasmota/outside/wall1/CT/stat'
-  color_temp_command_topic: 'tasmota/outside/wall1/CT/cmnd' 
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  color_temp_state_topic: 'tasmota/outside/wall1/stat/RESULT'
+  color_temp_command_topic: 'tasmota/outside/wall1/cmnd/CT'
+  color_temp_value_template: "{{ value_json.CT }}"
   qos: 0
   payload_on: "ON"
   payload_off: "OFF"
